@@ -20,6 +20,7 @@
     
     NSLog(@"hello");
      NSLog(@"hello");
+    NSLog(@"hello");
 }
 
 @end
