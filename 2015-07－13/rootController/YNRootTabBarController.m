@@ -22,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tabBar.tintColor = [UIColor redColor];
+    
     YNHomePageViewController *homePageVc = [[YNHomePageViewController alloc] init];
     YNServiceViewController *serviceVc = [[YNServiceViewController alloc] init];
     YNMineViewController *mineVc = [[YNMineViewController alloc] init];

@@ -7,6 +7,8 @@
 //
 
 #import "YNMineViewController.h"
+#import "YNNavigationController.h"
+#import "YNSignInViewController.h"
 
 @interface YNMineViewController ()
 @property (strong, nonatomic) UIBarButtonItem *signInBarButtonItem;
@@ -25,6 +27,15 @@
 - (void)signInItemHasClicked {
     
     NSLog(@"signIn button has clicked!");
+    
+    YNSignInViewController *signInVc = [[YNSignInViewController alloc] init];
+    
+    YNNavigationController *navVc = [[YNNavigationController alloc] initWithRootViewController:signInVc];
+    
+    [self presentViewController:navVc animated:YES completion:^{
+        
+    }];
+    
 }
 
 - (UIBarButtonItem *)signInBarButtonItem {
@@ -32,6 +43,7 @@
     if (_signInBarButtonItem == nil) {
         
         _signInBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"登录" style:UIBarButtonItemStylePlain target:self action:@selector(signInItemHasClicked)];
+        _signInBarButtonItem.tintColor = [UIColor redColor];
     }
     
     return _signInBarButtonItem;

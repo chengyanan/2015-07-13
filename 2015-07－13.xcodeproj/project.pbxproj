@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE4D0DD51B53AF5600D46A5B /* YNRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4D0DD41B53AF5600D46A5B /* YNRegisterViewController.m */; };
 		CEAE9F031B53573300D4B9A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAE9F021B53573300D4B9A6 /* main.m */; };
 		CEAE9F061B53573300D4B9A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAE9F051B53573300D4B9A6 /* AppDelegate.m */; };
 		CEAE9F0C1B53573300D4B9A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEAE9F0A1B53573300D4B9A6 /* Main.storyboard */; };
@@ -33,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE4D0DD31B53AF5600D46A5B /* YNRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNRegisterViewController.h; sourceTree = "<group>"; };
+		CE4D0DD41B53AF5600D46A5B /* YNRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNRegisterViewController.m; sourceTree = "<group>"; };
 		CEAE9EFD1B53573300D4B9A6 /* 2015-07－13.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "2015-07－13.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAE9F011B53573300D4B9A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEAE9F021B53573300D4B9A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -289,6 +292,8 @@
 			children = (
 				CEAE9F501B53765100D4B9A6 /* YNSignInViewController.h */,
 				CEAE9F511B53765100D4B9A6 /* YNSignInViewController.m */,
+				CE4D0DD31B53AF5600D46A5B /* YNRegisterViewController.h */,
+				CE4D0DD41B53AF5600D46A5B /* YNRegisterViewController.m */,
 			);
 			path = signIn;
 			sourceTree = "<group>";
@@ -397,6 +402,7 @@
 				CEAE9F4B1B535EBD00D4B9A6 /* YNMoreViewController.m in Sources */,
 				CEAE9F481B535EA500D4B9A6 /* YNMineViewController.m in Sources */,
 				CEAE9F4E1B5360E900D4B9A6 /* YNNavigationController.m in Sources */,
+				CE4D0DD51B53AF5600D46A5B /* YNRegisterViewController.m in Sources */,
 				CEAE9F521B53765100D4B9A6 /* YNSignInViewController.m in Sources */,
 				CEAE9F2C1B535C1D00D4B9A6 /* YNRootTabBarController.m in Sources */,
 				CEAE9F451B535E8A00D4B9A6 /* YNServiceViewController.m in Sources */,
