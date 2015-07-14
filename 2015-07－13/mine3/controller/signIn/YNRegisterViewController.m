@@ -32,9 +32,19 @@
     [self.view addSubview:self.verificationCode];
     [self.view addSubview:self.password];
     [self.view addSubview:self.regiteButton];
+    
+    UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewHasTaped)];
+    [self.view addGestureRecognizer:tgr];
+    
+    [self setupLayout];
 }
  
 #pragma mark - event response
+
+- (void)viewHasTaped {
+    [self.view endEditing:YES];
+}
+
 - (void)backBarButtonItemHasClicked {
     NSLog(@"back has clicked");
     
@@ -48,6 +58,13 @@
 - (void)regiteButtonHasClicked {
     
 }
+
+#pragma mark - private methods
+
+- (void)setupLayout {
+    
+}
+
 #pragma mark - setters and getters
 
 - (UIBarButtonItem *)backBarButtonItem {
@@ -65,10 +82,11 @@
     if (_userName == nil) {
         _userName = [[UITextField alloc] init];
         _userName.placeholder = @"手机号";
-        _userName.clearButtonMode = UITextFieldViewModeWhileEditing;
-        _userName.frame = CGRectMake(20, 100, 280, 44);
-        _userName.backgroundColor = [UIColor whiteColor];
         
+        _userName.clearButtonMode = UITextFieldViewModeWhileEditing;
+        _userName.frame = CGRectMake(20, 90, 280, 44);
+        _userName.backgroundColor = [UIColor whiteColor];
+        _userName.keyboardType = UIKeyboardTypeNumberPad;
         UIImageView *leftImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"register_userName"]];
         leftImageView.contentMode = UIViewContentModeScaleAspectFit;
         leftImageView.frame = CGRectMake(0, 0, 38, 30);
@@ -82,9 +100,10 @@
 - (UITextField *)verificationCode {
     if (_verificationCode == nil) {
         _verificationCode = [[UITextField alloc] init];
-        _verificationCode.frame = CGRectMake(20, 150, 280, 44);
+        _verificationCode.frame = CGRectMake(20, 140, 280, 44);
         _verificationCode.placeholder = @"验证码";
         _verificationCode.backgroundColor = [UIColor whiteColor];
+        _verificationCode.keyboardType = UIKeyboardTypeNumberPad;
         
         UIImageView *leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"register_verficationCode"]];
         leftView.contentMode = UIViewContentModeScaleAspectFit;
@@ -107,7 +126,7 @@
     
     if (_password == nil) {
         _password = [[UITextField alloc] init];
-        _password.frame = CGRectMake(20, 200, 280, 44);
+        _password.frame = CGRectMake(20, 190, 280, 44);
         _password.backgroundColor = [UIColor whiteColor];
         _password.clearButtonMode = UITextFieldViewModeWhileEditing;
         _password.placeholder = @"密码";
@@ -123,7 +142,7 @@
 - (UIButton *)regiteButton {
     if (_regiteButton == nil) {
         _regiteButton = [[UIButton alloc] init];
-        _regiteButton.frame = CGRectMake(20, 265, 280, 44);
+        _regiteButton.frame = CGRectMake(20, 255, 280, 44);
         _regiteButton.layer.cornerRadius = 3;
         _regiteButton.clipsToBounds = YES;
         
