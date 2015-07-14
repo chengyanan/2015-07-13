@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4062B3F11B54EE8B00175EE1 /* UITextField+LeftAndRightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4062B3F01B54EE8B00175EE1 /* UITextField+LeftAndRightView.m */; };
 		5E47D1F7B1B0420007E10D4D /* libPods-2015-07－13.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B68043E448964FAD805436B /* libPods-2015-07－13.a */; };
 		CE4D0DD51B53AF5600D46A5B /* YNRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4D0DD41B53AF5600D46A5B /* YNRegisterViewController.m */; };
 		CEAE9F031B53573300D4B9A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAE9F021B53573300D4B9A6 /* main.m */; };
@@ -36,6 +37,8 @@
 
 /* Begin PBXFileReference section */
 		3B68043E448964FAD805436B /* libPods-2015-07－13.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-2015-07－13.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4062B3EF1B54EE8B00175EE1 /* UITextField+LeftAndRightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+LeftAndRightView.h"; sourceTree = "<group>"; };
+		4062B3F01B54EE8B00175EE1 /* UITextField+LeftAndRightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+LeftAndRightView.m"; sourceTree = "<group>"; };
 		61171ACB1BC39838779DE974 /* Pods-2015-07－13.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2015-07－13.debug.xcconfig"; path = "Pods/Target Support Files/Pods-2015-07－13/Pods-2015-07－13.debug.xcconfig"; sourceTree = "<group>"; };
 		CDBD23518548B34E74C9B48F /* Pods-2015-07－13.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2015-07－13.release.xcconfig"; path = "Pods/Target Support Files/Pods-2015-07－13/Pods-2015-07－13.release.xcconfig"; sourceTree = "<group>"; };
 		CE4D0DD31B53AF5600D46A5B /* YNRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNRegisterViewController.h; sourceTree = "<group>"; };
@@ -86,6 +89,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4062B3E91B54EDCB00175EE1 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				4062B3EE1B54EE0500175EE1 /* Register textField */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		4062B3EE1B54EE0500175EE1 /* Register textField */ = {
+			isa = PBXGroup;
+			children = (
+				4062B3EF1B54EE8B00175EE1 /* UITextField+LeftAndRightView.h */,
+				4062B3F01B54EE8B00175EE1 /* UITextField+LeftAndRightView.m */,
+			);
+			path = "Register textField";
+			sourceTree = "<group>";
+		};
 		4ACF2791856025EF4A070AD5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,6 +304,7 @@
 		CEAE9F3C1B535E1300D4B9A6 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				4062B3E91B54EDCB00175EE1 /* Register */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -467,6 +488,7 @@
 				CEAE9F451B535E8A00D4B9A6 /* YNServiceViewController.m in Sources */,
 				CEAE9F031B53573300D4B9A6 /* main.m in Sources */,
 				CEAE9F421B535E6800D4B9A6 /* YNHomePageViewController.m in Sources */,
+				4062B3F11B54EE8B00175EE1 /* UITextField+LeftAndRightView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,6 +619,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "2015-07－13/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -609,6 +632,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "2015-07－13/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

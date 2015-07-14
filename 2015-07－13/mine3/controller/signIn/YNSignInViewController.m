@@ -9,6 +9,7 @@
 #import "YNSignInViewController.h"
 #import "YNRegisterViewController.h"
 
+
 @interface YNSignInViewController ()
 
 @property (strong, nonatomic) UIBarButtonItem *registerBarButtonItem;
@@ -34,15 +35,11 @@
 
 - (void)registerBarButtonItemHasClicked {
     
-    NSLog(@"register has clicked");
-    
     YNRegisterViewController *registerVc = [[YNRegisterViewController alloc] init];
     [self.navigationController pushViewController:registerVc animated:YES];
 }
 
 - (void)disMissSelfBarButtonItemHasClicked {
-    
-     NSLog(@"dismiss has clicked");
     
     [self dismissViewControllerAnimated:YES completion:^{
         
