@@ -20,6 +20,8 @@
     UIColor *titleClolr = MainStyleClolr;
     
     self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : titleClolr};
+    
+    [[UINavigationBar appearance] setTintColor:MainStyleClolr];
 }
 
 

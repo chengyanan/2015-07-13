@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		402BC2B41B5769A500E6A429 /* YNOrderOrreserveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 402BC2B31B5769A500E6A429 /* YNOrderOrreserveCell.m */; };
 		402FAB091B55F42F000FA55B /* YNTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 402FAB081B55F42F000FA55B /* YNTool.m */; };
 		402FAB0B1B56457C000FA55B /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 402FAB0A1B56457C000FA55B /* MessageUI.framework */; };
 		402FAB411B566969000FA55B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402FAB401B566969000FA55B /* ViewController.m */; };
 		4062B3F11B54EE8B00175EE1 /* UITextField+LeftAndRightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4062B3F01B54EE8B00175EE1 /* UITextField+LeftAndRightView.m */; };
+		406DCA271B57661E00FF569E /* YNOrderAndReserveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 406DCA261B57661E00FF569E /* YNOrderAndReserveViewController.m */; };
 		5E47D1F7B1B0420007E10D4D /* libPods-2015-07－13.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B68043E448964FAD805436B /* libPods-2015-07－13.a */; };
 		CE4D0DD51B53AF5600D46A5B /* YNRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4D0DD41B53AF5600D46A5B /* YNRegisterViewController.m */; };
 		CEAE9F031B53573300D4B9A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAE9F021B53573300D4B9A6 /* main.m */; };
@@ -40,6 +42,8 @@
 
 /* Begin PBXFileReference section */
 		3B68043E448964FAD805436B /* libPods-2015-07－13.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-2015-07－13.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		402BC2B21B5769A500E6A429 /* YNOrderOrreserveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNOrderOrreserveCell.h; sourceTree = "<group>"; };
+		402BC2B31B5769A500E6A429 /* YNOrderOrreserveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNOrderOrreserveCell.m; sourceTree = "<group>"; };
 		402FAB071B55F42F000FA55B /* YNTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNTool.h; sourceTree = "<group>"; };
 		402FAB081B55F42F000FA55B /* YNTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNTool.m; sourceTree = "<group>"; };
 		402FAB0A1B56457C000FA55B /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -48,6 +52,8 @@
 		402FAB401B566969000FA55B /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4062B3EF1B54EE8B00175EE1 /* UITextField+LeftAndRightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+LeftAndRightView.h"; sourceTree = "<group>"; };
 		4062B3F01B54EE8B00175EE1 /* UITextField+LeftAndRightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+LeftAndRightView.m"; sourceTree = "<group>"; };
+		406DCA251B57661E00FF569E /* YNOrderAndReserveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNOrderAndReserveViewController.h; sourceTree = "<group>"; };
+		406DCA261B57661E00FF569E /* YNOrderAndReserveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNOrderAndReserveViewController.m; sourceTree = "<group>"; };
 		61171ACB1BC39838779DE974 /* Pods-2015-07－13.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2015-07－13.debug.xcconfig"; path = "Pods/Target Support Files/Pods-2015-07－13/Pods-2015-07－13.debug.xcconfig"; sourceTree = "<group>"; };
 		CDBD23518548B34E74C9B48F /* Pods-2015-07－13.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2015-07－13.release.xcconfig"; path = "Pods/Target Support Files/Pods-2015-07－13/Pods-2015-07－13.release.xcconfig"; sourceTree = "<group>"; };
 		CE4D0DD31B53AF5600D46A5B /* YNRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNRegisterViewController.h; sourceTree = "<group>"; };
@@ -99,6 +105,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		402BC2B11B57696900E6A429 /* orderOrreserve Cell */ = {
+			isa = PBXGroup;
+			children = (
+				402BC2B21B5769A500E6A429 /* YNOrderOrreserveCell.h */,
+				402BC2B31B5769A500E6A429 /* YNOrderOrreserveCell.m */,
+			);
+			path = "orderOrreserve Cell";
+			sourceTree = "<group>";
+		};
 		402FAB061B55F408000FA55B /* tool */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +138,15 @@
 				4062B3F01B54EE8B00175EE1 /* UITextField+LeftAndRightView.m */,
 			);
 			path = "Register textField";
+			sourceTree = "<group>";
+		};
+		406DCA241B5765EE00FF569E /* orderAndReserve */ = {
+			isa = PBXGroup;
+			children = (
+				406DCA251B57661E00FF569E /* YNOrderAndReserveViewController.h */,
+				406DCA261B57661E00FF569E /* YNOrderAndReserveViewController.m */,
+			);
+			path = orderAndReserve;
 			sourceTree = "<group>";
 		};
 		4ACF2791856025EF4A070AD5 /* Pods */ = {
@@ -265,6 +289,7 @@
 		CEAE9F311B535DA600D4B9A6 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				406DCA241B5765EE00FF569E /* orderAndReserve */,
 				CEAE9F401B535E6800D4B9A6 /* YNHomePageViewController.h */,
 				CEAE9F411B535E6800D4B9A6 /* YNHomePageViewController.m */,
 			);
@@ -281,6 +306,7 @@
 		CEAE9F331B535DA600D4B9A6 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				402BC2B11B57696900E6A429 /* orderOrreserve Cell */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -509,8 +535,10 @@
 				CE4D0DD51B53AF5600D46A5B /* YNRegisterViewController.m in Sources */,
 				CEAE9F521B53765100D4B9A6 /* YNSignInViewController.m in Sources */,
 				402FAB411B566969000FA55B /* ViewController.m in Sources */,
+				406DCA271B57661E00FF569E /* YNOrderAndReserveViewController.m in Sources */,
 				CEAE9F2C1B535C1D00D4B9A6 /* YNRootTabBarController.m in Sources */,
 				CEAE9F451B535E8A00D4B9A6 /* YNServiceViewController.m in Sources */,
+				402BC2B41B5769A500E6A429 /* YNOrderOrreserveCell.m in Sources */,
 				402FAB091B55F42F000FA55B /* YNTool.m in Sources */,
 				CEAE9F031B53573300D4B9A6 /* main.m in Sources */,
 				CEAE9F421B535E6800D4B9A6 /* YNHomePageViewController.m in Sources */,
