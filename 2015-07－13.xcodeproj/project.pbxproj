@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		402FAB091B55F42F000FA55B /* YNTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 402FAB081B55F42F000FA55B /* YNTool.m */; };
+		402FAB0B1B56457C000FA55B /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 402FAB0A1B56457C000FA55B /* MessageUI.framework */; };
+		402FAB411B566969000FA55B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402FAB401B566969000FA55B /* ViewController.m */; };
 		4062B3F11B54EE8B00175EE1 /* UITextField+LeftAndRightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4062B3F01B54EE8B00175EE1 /* UITextField+LeftAndRightView.m */; };
 		5E47D1F7B1B0420007E10D4D /* libPods-2015-07－13.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B68043E448964FAD805436B /* libPods-2015-07－13.a */; };
 		CE4D0DD51B53AF5600D46A5B /* YNRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4D0DD41B53AF5600D46A5B /* YNRegisterViewController.m */; };
@@ -37,6 +40,12 @@
 
 /* Begin PBXFileReference section */
 		3B68043E448964FAD805436B /* libPods-2015-07－13.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-2015-07－13.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		402FAB071B55F42F000FA55B /* YNTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNTool.h; sourceTree = "<group>"; };
+		402FAB081B55F42F000FA55B /* YNTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNTool.m; sourceTree = "<group>"; };
+		402FAB0A1B56457C000FA55B /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		402FAB0C1B56653C000FA55B /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		402FAB3F1B566969000FA55B /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		402FAB401B566969000FA55B /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4062B3EF1B54EE8B00175EE1 /* UITextField+LeftAndRightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+LeftAndRightView.h"; sourceTree = "<group>"; };
 		4062B3F01B54EE8B00175EE1 /* UITextField+LeftAndRightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+LeftAndRightView.m"; sourceTree = "<group>"; };
 		61171ACB1BC39838779DE974 /* Pods-2015-07－13.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2015-07－13.debug.xcconfig"; path = "Pods/Target Support Files/Pods-2015-07－13/Pods-2015-07－13.debug.xcconfig"; sourceTree = "<group>"; };
@@ -75,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				402FAB0B1B56457C000FA55B /* MessageUI.framework in Frameworks */,
 				5E47D1F7B1B0420007E10D4D /* libPods-2015-07－13.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -89,6 +99,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		402FAB061B55F408000FA55B /* tool */ = {
+			isa = PBXGroup;
+			children = (
+				402FAB071B55F42F000FA55B /* YNTool.h */,
+				402FAB081B55F42F000FA55B /* YNTool.m */,
+			);
+			path = tool;
+			sourceTree = "<group>";
+		};
 		4062B3E91B54EDCB00175EE1 /* Register */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +137,7 @@
 		B57D2B3BF47894DB4CC9FC0C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				402FAB0A1B56457C000FA55B /* MessageUI.framework */,
 				3B68043E448964FAD805436B /* libPods-2015-07－13.a */,
 			);
 			name = Frameworks;
@@ -159,6 +179,8 @@
 		CEAE9F001B53573300D4B9A6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				402FAB3F1B566969000FA55B /* ViewController.h */,
+				402FAB401B566969000FA55B /* ViewController.m */,
 				CEAE9F041B53573300D4B9A6 /* AppDelegate.h */,
 				CEAE9F051B53573300D4B9A6 /* AppDelegate.m */,
 				CEAE9F0A1B53573300D4B9A6 /* Main.storyboard */,
@@ -166,6 +188,7 @@
 				CEAE9F0F1B53573300D4B9A6 /* LaunchScreen.xib */,
 				CEAE9F011B53573300D4B9A6 /* Info.plist */,
 				CEAE9F021B53573300D4B9A6 /* main.m */,
+				402FAB0C1B56653C000FA55B /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -211,6 +234,7 @@
 		CEAE9F2E1B535CFB00D4B9A6 /* mine3 */ = {
 			isa = PBXGroup;
 			children = (
+				402FAB061B55F408000FA55B /* tool */,
 				CEAE9F3A1B535E1300D4B9A6 /* controller */,
 				CEAE9F3B1B535E1300D4B9A6 /* model */,
 				CEAE9F3C1B535E1300D4B9A6 /* view */,
@@ -484,8 +508,10 @@
 				CEAE9F4E1B5360E900D4B9A6 /* YNNavigationController.m in Sources */,
 				CE4D0DD51B53AF5600D46A5B /* YNRegisterViewController.m in Sources */,
 				CEAE9F521B53765100D4B9A6 /* YNSignInViewController.m in Sources */,
+				402FAB411B566969000FA55B /* ViewController.m in Sources */,
 				CEAE9F2C1B535C1D00D4B9A6 /* YNRootTabBarController.m in Sources */,
 				CEAE9F451B535E8A00D4B9A6 /* YNServiceViewController.m in Sources */,
+				402FAB091B55F42F000FA55B /* YNTool.m in Sources */,
 				CEAE9F031B53573300D4B9A6 /* main.m in Sources */,
 				CEAE9F421B535E6800D4B9A6 /* YNHomePageViewController.m in Sources */,
 				4062B3F11B54EE8B00175EE1 /* UITextField+LeftAndRightView.m in Sources */,
@@ -547,7 +573,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Feng Hou (297HJMGP7U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wei Feng Hou (297HJMGP7U)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -591,7 +618,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Feng Hou (297HJMGP7U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wei Feng Hou (297HJMGP7U)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -618,6 +646,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Feng Hou (297HJMGP7U)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/2015-07－13/PrefixHeader.pch";
 				INFOPLIST_FILE = "2015-07－13/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -631,6 +662,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Feng Hou (297HJMGP7U)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/2015-07－13/PrefixHeader.pch";
 				INFOPLIST_FILE = "2015-07－13/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

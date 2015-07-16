@@ -9,6 +9,7 @@
 #import "YNMineViewController.h"
 #import "YNNavigationController.h"
 #import "YNSignInViewController.h"
+#define USERID [[NSUserDefaults standardUserDefaults] objectForKey:@"USERID"]
 
 @interface YNMineViewController ()
 @property (strong, nonatomic) UIBarButtonItem *signInBarButtonItem;
@@ -20,21 +21,38 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor blueColor];
-    
     self.navigationItem.rightBarButtonItem = self.signInBarButtonItem;
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (USERID) {
+        self.signInBarButtonItem.title = @"注销";
+    } else {
+        self.signInBarButtonItem.title = @"登录";
+    }
 }
 
 - (void)signInItemHasClicked {
     
-    NSLog(@"signIn button has clicked!");
-    
-    YNSignInViewController *signInVc = [[YNSignInViewController alloc] init];
-    
-    YNNavigationController *navVc = [[YNNavigationController alloc] initWithRootViewController:signInVc];
-    
-    [self presentViewController:navVc animated:YES completion:^{
+    if ([self.signInBarButtonItem.title isEqualToString:@"登录"]) {
         
-    }];
+        YNSignInViewController *signInVc = [[YNSignInViewController alloc] init];
+        
+        YNNavigationController *navVc = [[YNNavigationController alloc] initWithRootViewController:signInVc];
+        
+        [self presentViewController:navVc animated:YES completion:^{
+            
+        }];
+        
+    } else if ([self.signInBarButtonItem.title isEqualToString:@"注销"]){
+        
+        
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"USERID"];
+        self.signInBarButtonItem.title = @"登录";
+    }
     
 }
 
@@ -42,8 +60,9 @@
     
     if (_signInBarButtonItem == nil) {
         
-        _signInBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"登录" style:UIBarButtonItemStylePlain target:self action:@selector(signInItemHasClicked)];
-        _signInBarButtonItem.tintColor = [UIColor redColor];
+        _signInBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(signInItemHasClicked)];
+        
+        _signInBarButtonItem.tintColor = MainStyleClolr;
     }
     
     return _signInBarButtonItem;

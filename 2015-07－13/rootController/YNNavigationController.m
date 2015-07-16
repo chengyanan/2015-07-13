@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIColor *titleClolr = [UIColor redColor];
+    UIColor *titleClolr = MainStyleClolr;
     
     self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : titleClolr};
 }

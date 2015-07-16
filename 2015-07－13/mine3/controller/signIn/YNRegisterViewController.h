@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol YNRegisterViewControllerDelagate <NSObject>
+
+@optional
+- (void)regiserSuccessWithUserName:(NSString *)userName password:(NSString *)password;
+
+@end
+
 @interface YNRegisterViewController : UIViewController
+
+@property (assign, nonatomic)  id <YNRegisterViewControllerDelagate> delegate;
 
 @end

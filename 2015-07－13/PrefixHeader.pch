@@ -1,0 +1,14 @@
+//
+//  PrefixHeader.pch
+//  2015-07－13
+//
+//  Created by 农盟 on 15/7/15.
+//  Copyright (c) 2015年 YN. All rights reserved.
+//
+
+#ifndef _015_07_13_PrefixHeader_pch
+#define _015_07_13_PrefixHeader_pch
+
+#define MainStyleClolr [UIColor redColor]
+
+#endif

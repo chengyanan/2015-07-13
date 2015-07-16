@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tabBar.tintColor = [UIColor redColor];
+    self.tabBar.tintColor = MainStyleClolr;
     
     YNHomePageViewController *homePageVc = [[YNHomePageViewController alloc] init];
     YNServiceViewController *serviceVc = [[YNServiceViewController alloc] init];

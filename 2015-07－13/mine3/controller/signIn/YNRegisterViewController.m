@@ -9,10 +9,15 @@
 #import "YNRegisterViewController.h"
 #import "UITextField+LeftAndRightView.h"
 #import <Masonry.h>
+#import "YNTool.h"
+#import <MBProgressHUD.h>
 
-#define Margin 15
+
+#define Margin 12
 #define TextFileHeight 44
 #define VerticalSpace 3
+#define CodeCount 4
+
 
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
 #define ScreenWidth [UIScreen mainScreen].bounds.size.width
@@ -22,6 +27,8 @@
 #define iphone5 ScreenHeight == 568
 #define iphone6   ScreenHeight == 667
 
+#define USERARRAY [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"userArray.db"]
+
 @interface YNRegisterViewController ()
 @property (strong, nonatomic) UIBarButtonItem *backBarButtonItem;
 //
@@ -29,6 +36,8 @@
 @property (strong, nonatomic) UITextField *verificationCode;
 @property (strong, nonatomic) UITextField *password;
 @property (strong, nonatomic) UITextField *passwordAgain;
+
+@property(strong, nonatomic) UIButton *getVerificationCode;
 
 @property (strong, nonatomic) UIButton *regiteButton;
 
@@ -104,13 +113,74 @@
 
 - (void)getVerificationButtonhasClicked {
     
+    
+    //检查手机号是否正确
+    if ([YNTool isPhoneNumber:self.userName.text]) {
+        
+        self.getVerificationCode.backgroundColor = [UIColor grayColor];
+        self.getVerificationCode.userInteractionEnabled = NO;
+        
+        //是手机号发送验证码
+        
+    } else {
+        
+        //不是手机号提示错误
+        [self showLabelWithText:@"您输入的号码不正确" interval:1];
+    }
 }
 
 - (void)regiteButtonHasClicked {
     
+    BOOL allFillIn = self.userName.text.length && self.verificationCode.text.length && self.password.text.length && self.passwordAgain.text.length;
+    
+    if (allFillIn) {
+        
+        if ([self.passwordAgain.text isEqualToString:self.password.text]) {
+            
+            //把用户名存起来
+            NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+            [userDefault setObject:self.userName.text forKey:@"USERID"];
+            
+            NSDictionary *dict = @{@"userName": self.userName.text, @"userPassword": self.password.text};
+            
+            NSMutableArray *userArray = [NSMutableArray array];
+            [userArray addObject:dict];
+            
+            [NSKeyedArchiver archiveRootObject:userArray toFile:USERARRAY];
+            
+            [self showLabelWithText:@"注册成功" interval:0.7];
+            
+            if ([self.delegate respondsToSelector:@selector(regiserSuccessWithUserName:password:)]) {
+                
+                [self.delegate regiserSuccessWithUserName:self.userName.text password:self.password.text];
+            }
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                
+                 [self.navigationController popViewControllerAnimated:YES];
+            });
+           
+        }
+        
+    } else {
+        [self showLabelWithText:@"信息填写不完整" interval:1];
+    }
+    
 }
 
 #pragma mark - private methods
+
+- (void)showLabelWithText:(NSString *)text interval:(CGFloat)interval{
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = text;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(interval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        [hud hide:YES];
+    });
+}
 
 - (void)setupLayout {
     
@@ -181,6 +251,21 @@
     return _userName;
 }
 
+- (UITextField *)password {
+    
+    if (_password == nil) {
+        
+        _password = [[UITextField alloc] init];
+        _password.secureTextEntry = YES;
+        
+        [_password leftImageViewName:@"register_password"
+                           rightView:nil
+                         placeHolder:@"密码"
+                        keyBoardType:0];
+    }
+    return _password;
+}
+
 - (UITextField *)verificationCode {
     
     if (_verificationCode == nil) {
@@ -188,8 +273,10 @@
         _verificationCode = [[UITextField alloc] init];
         
         UIButton *getVerificationCode = [[UIButton alloc] init];
-        getVerificationCode.frame = CGRectMake(0, 0, 44, 30);
-        getVerificationCode.backgroundColor = [UIColor redColor];
+        self.getVerificationCode = getVerificationCode;
+        getVerificationCode.layer.cornerRadius = 3;
+        getVerificationCode.frame = CGRectMake(0, 0, 72, 40);
+        getVerificationCode.backgroundColor = MainStyleClolr;
         [getVerificationCode setTitle:@"获取" forState:UIControlStateNormal];
         [getVerificationCode addTarget:self action:@selector(getVerificationButtonhasClicked) forControlEvents:UIControlEventTouchUpInside];
         
@@ -200,21 +287,6 @@
 
     }
     return _verificationCode;
-}
-
-- (UITextField *)password {
-    
-    if (_password == nil) {
-        
-        _password = [[UITextField alloc] init];
-        _password.secureTextEntry = YES;
-
-        [_password leftImageViewName:@"register_password"
-                           rightView:nil
-                         placeHolder:@"密码"
-                        keyBoardType:0];
-    }
-    return _password;
 }
 
 - (UITextField *)passwordAgain {
@@ -239,7 +311,7 @@
         _regiteButton.clipsToBounds = YES;
         
         [_regiteButton setTitle:@"注册" forState:UIControlStateNormal];
-        [_regiteButton setBackgroundColor:[UIColor redColor]];
+        [_regiteButton setBackgroundColor:MainStyleClolr];
         [_regiteButton addTarget:self action:@selector(regiteButtonHasClicked) forControlEvents:UIControlEventTouchUpInside];
     }
     return _regiteButton;
@@ -252,4 +324,6 @@
     }
     return _scrollView;
 }
+
+
 @end

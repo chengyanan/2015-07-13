@@ -10,15 +10,24 @@
 
 @interface YNHomePageViewController ()
 
+@property (nonatomic, strong) UICollectionView *collectionView;
+
 @end
 
 @implementation YNHomePageViewController
 
+#pragma mark - life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor redColor];
     
 }
+
+#pragma mark - delegate
+#pragma mark - CustomDelegate
+#pragma mark - event response
+#pragma mark - private Methods
+#pragma getters and setters
 
 @end

@@ -3,6 +3,7 @@
 
 target '2015-07－13' do
 pod 'Masonry'
+pod 'MBProgressHUD'
 end
 
 target '2015-07－13Tests' do
