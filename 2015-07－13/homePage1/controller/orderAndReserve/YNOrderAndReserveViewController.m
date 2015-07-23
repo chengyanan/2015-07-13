@@ -9,10 +9,14 @@
 #import "YNOrderAndReserveViewController.h"
 #import "YNOrderOrreserveCell.h"
 #import <Masonry.h>
+#import "YNDropDownMenu.h"
+
 
 @interface YNOrderAndReserveViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic, strong) YNDropDownMenu *dropDownMenu;
 
 @end
 
@@ -26,8 +30,12 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self.view addSubview:self.tableView];
+    [self.view addSubview:self.dropDownMenu];
     
     [self setupLayout];
+    
+    self.dropDownMenu.menuTitleArray = @[@"附近", @"口味", @"排序"];
+
 }
 
 
@@ -50,8 +58,16 @@
 
 #pragma mark - private Methods
 - (void)setupLayout {
+    
+    [self.dropDownMenu mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top).mas_equalTo(64);
+        make.left.right.equalTo(self.view);
+        make.height.mas_equalTo(44);
+    }];
+    
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.top.equalTo(self.view);
+        make.top.equalTo(self.dropDownMenu.mas_bottom).mas_equalTo(-64);
+        make.left.right.bottom.equalTo(self.view);
     }];
 }
 
@@ -63,6 +79,14 @@
         _tableView.dataSource = self;
     }
     return _tableView;
+}
+
+- (YNDropDownMenu *)dropDownMenu {
+    if (_dropDownMenu == nil) {
+        _dropDownMenu = [[YNDropDownMenu alloc] init];
+        
+    }
+    return _dropDownMenu;
 }
 
 @end

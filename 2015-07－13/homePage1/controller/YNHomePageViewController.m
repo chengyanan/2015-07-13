@@ -9,8 +9,10 @@
 #import "YNHomePageViewController.h"
 #import <MBProgressHUD.h>
 #import <Masonry.h>
-
+#import "YNScrollCycleCell.h"
 #import "YNOrderAndReserveViewController.h"
+#import "YNScrollCycleView.h"
+
 
 #define TopHight self.view.frame.size.height * 0.264
 #define AverageHeight self.view.frame.size.height * 0.185
@@ -23,9 +25,13 @@
 
 #define RightWith (self.view.frame.size.width - HorizontalSpace) * (1 - LeftPercent)
 
-@interface YNHomePageViewController ()
+#define Identify @"CELL_CYCLE"
+
+@interface YNHomePageViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
+
+@property (nonatomic, strong) YNScrollCycleView *scrollCycleView;
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 
@@ -37,6 +43,8 @@
 @property (nonatomic, strong) UIButton *grabCouponsButton;
 @property (nonatomic, strong) UIButton *QueuingButton;
 @property (nonatomic, strong) UIButton *shakeButton;
+
+@property (nonatomic, strong) NSArray *tempArray;
 
 @end
 
@@ -50,7 +58,10 @@
     
     [self.view addSubview:self.scrollView];
     
-    [self.scrollView addSubview:self.topBigImageButton];
+//    [self.scrollView addSubview:self.collectionView];
+    
+    [self.scrollView addSubview:self.scrollCycleView];
+    
     [self.scrollView addSubview:self.orderOrReserveButton];
     [self.scrollView addSubview:self.takeOutButton];
     [self.scrollView addSubview:self.memberShipButton];
@@ -59,11 +70,41 @@
     [self.scrollView addSubview:self.shakeButton];
     
     [self setUpLayout];
+    
+//    [self.collectionView registerClass:[YNScrollCycleCell class] forCellWithReuseIdentifier:Identify];
 }
 
-#pragma mark - delegate
+#pragma mark - UICollectionViewDataSource
 
-#pragma mark - CustomDelegate
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    return self.tempArray.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    YNScrollCycleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:Identify forIndexPath:indexPath];
+    cell.image = self.tempArray[indexPath.item];
+    
+    return cell;
+}
+
+- (NSArray *)tempArray {
+    if (_tempArray == nil) {
+        
+        UIImage *image1 = [UIImage imageNamed:@"img_01"];
+        UIImage *image2 = [UIImage imageNamed:@"img_02"];
+        UIImage *image3 = [UIImage imageNamed:@"img_03"];
+        
+        _tempArray = @[image1, image2, image3];
+    }
+    return _tempArray;
+}
+
+
+#pragma mark - UICollectionViewDelegate
+
+
 
 #pragma mark - event response
 - (void)orderOrReserveButtonHasClicked {
@@ -96,7 +137,7 @@
         make.left.right.top.bottom.equalTo(self.view);
     }];
     
-    [self.topBigImageButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.scrollCycleView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.scrollView);
         make.left.right.equalTo(self.view);
         make.width.mas_equalTo(self.view.frame.size.width);
@@ -105,7 +146,7 @@
     
     [self.orderOrReserveButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view);
-        make.top.equalTo(self.topBigImageButton.mas_bottom).mas_equalTo(VerticalSpace);
+        make.top.equalTo(self.scrollCycleView.mas_bottom).mas_equalTo(VerticalSpace);
         make.width.mas_equalTo(LeftWith);
         make.height.mas_equalTo(AverageHeight);
     }];
@@ -226,4 +267,32 @@
     }
     return _shakeButton;
 }
+
+- (UICollectionView *)collectionView {
+    if (_collectionView == nil) {
+        
+        UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+        flowLayout.itemSize = CGSizeMake(self.view.frame.size.width, TopHight-1);
+        flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        flowLayout.minimumLineSpacing = 0;
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
+        _collectionView.pagingEnabled = YES;
+        _collectionView.bounces = NO;
+        _collectionView.backgroundColor = [UIColor clearColor];
+        _collectionView.showsHorizontalScrollIndicator = NO;
+        _collectionView.delegate = self;
+        _collectionView.dataSource = self;
+        
+    }
+    return _collectionView;
+}
+
+- (YNScrollCycleView *)scrollCycleView {
+    
+    if (_scrollCycleView == nil) {
+        _scrollCycleView = [[YNScrollCycleView alloc] init];
+    }
+    return _scrollCycleView;
+}
+
 @end
