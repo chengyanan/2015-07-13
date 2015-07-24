@@ -12,7 +12,7 @@
 #import "YNScrollCycleCell.h"
 #import "YNOrderAndReserveViewController.h"
 #import "YNScrollCycleView.h"
-
+#import "YNLocation.h"
 
 #define TopHight self.view.frame.size.height * 0.264
 #define AverageHeight self.view.frame.size.height * 0.185
@@ -27,9 +27,7 @@
 
 #define Identify @"CELL_CYCLE"
 
-@interface YNHomePageViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
-
-@property (nonatomic, strong) UICollectionView *collectionView;
+@interface YNHomePageViewController ()
 
 @property (nonatomic, strong) YNScrollCycleView *scrollCycleView;
 
@@ -46,6 +44,8 @@
 
 @property (nonatomic, strong) NSArray *tempArray;
 
+@property (nonatomic, strong) YNLocation *location;
+
 @end
 
 @implementation YNHomePageViewController
@@ -58,8 +58,6 @@
     
     [self.view addSubview:self.scrollView];
     
-//    [self.scrollView addSubview:self.collectionView];
-    
     [self.scrollView addSubview:self.scrollCycleView];
     
     [self.scrollView addSubview:self.orderOrReserveButton];
@@ -71,23 +69,22 @@
     
     [self setUpLayout];
     
-//    [self.collectionView registerClass:[YNScrollCycleCell class] forCellWithReuseIdentifier:Identify];
+    [self.location startLocate];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.scrollCycleView startTimer];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.scrollCycleView pauseTimer];
 }
 
 #pragma mark - UICollectionViewDataSource
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
-    return self.tempArray.count;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    YNScrollCycleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:Identify forIndexPath:indexPath];
-    cell.image = self.tempArray[indexPath.item];
-    
-    return cell;
-}
 
 - (NSArray *)tempArray {
     if (_tempArray == nil) {
@@ -268,31 +265,19 @@
     return _shakeButton;
 }
 
-- (UICollectionView *)collectionView {
-    if (_collectionView == nil) {
-        
-        UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-        flowLayout.itemSize = CGSizeMake(self.view.frame.size.width, TopHight-1);
-        flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        flowLayout.minimumLineSpacing = 0;
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
-        _collectionView.pagingEnabled = YES;
-        _collectionView.bounces = NO;
-        _collectionView.backgroundColor = [UIColor clearColor];
-        _collectionView.showsHorizontalScrollIndicator = NO;
-        _collectionView.delegate = self;
-        _collectionView.dataSource = self;
-        
-    }
-    return _collectionView;
-}
-
 - (YNScrollCycleView *)scrollCycleView {
     
     if (_scrollCycleView == nil) {
         _scrollCycleView = [[YNScrollCycleView alloc] init];
+        _scrollCycleView.tempArray = self.tempArray;
     }
     return _scrollCycleView;
 }
 
+- (YNLocation *)location {
+    if (_location == nil) {
+        _location = [[YNLocation alloc] init];
+    }
+    return _location;
+}
 @end

@@ -12,4 +12,7 @@
 
 @property (nonatomic, strong) NSArray *tempArray;
 
+- (void)pauseTimer;
+- (void)startTimer;
+
 @end

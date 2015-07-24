@@ -21,7 +21,11 @@
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 
-@property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
+@property (nonatomic, strong) NSTimer *timer;
+
+@property (nonatomic, strong) UIPageControl *pageControl;
+
+@property (nonatomic, assign) NSInteger pageNumber;
 
 @end
 
@@ -31,16 +35,92 @@
     self = [super init];
     if (self) {
         
+        self.pageNumber = -1;
+        
         [self addSubview:self.collectionView];
+        [self addSubview:self.pageControl];
+        
         [self.collectionView registerClass:[YNScrollCycleCell class] forCellWithReuseIdentifier:Identify];
         
         [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.top.bottom.equalTo(self);
         }];
+        
+        [self.pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self);
+            make.bottom.equalTo(self);
+            make.height.mas_equalTo(16);
+        }];
+        
+        
     }
     return self;
 }
 
+#pragma mark - event response
+- (void)scrollToforward {
+    
+    self.pageNumber++;
+    
+    NSInteger row = self.pageNumber % self.tempArray.count;
+
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    
+    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+    
+}
+
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    return self.tempArray.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    YNScrollCycleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:Identify forIndexPath:indexPath];
+    cell.image = self.tempArray[indexPath.item];
+    
+    return cell;
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    NSInteger page = (scrollView.contentOffset.x + ScreenWidth/2) / ScreenWidth;
+    
+//    NSLog(@"%ld",page);
+    
+    self.pageControl.currentPage = page;
+    
+//    NSLog(@"%f", scrollView.contentOffset.x);
+    
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    
+    [self startTimer];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    
+    [self pauseTimer];
+}
+
+#pragma mark - private mothed
+
+- (void)pauseTimer {
+    [self.timer setFireDate:[NSDate distantFuture]];
+}
+
+- (void)startTimer {
+    
+    [self.timer setFireDate:[[NSDate alloc] initWithTimeIntervalSinceNow:1]];
+}
+
+#pragma mark - getters and setters
 - (UICollectionView *)collectionView {
     if (_collectionView == nil) {
         
@@ -60,38 +140,39 @@
     return _collectionView;
 }
 
-#pragma mark - UICollectionViewDataSource
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
-    return self.tempArray.count *100;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    YNScrollCycleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:Identify forIndexPath:indexPath];
-    cell.image = self.tempArray[indexPath.item%self.tempArray.count];
-    
-    return cell;
-}
-
-
-- (NSArray *)tempArray {
-    if (_tempArray == nil) {
+- (UIPageControl *)pageControl {
+    if (_pageControl == nil) {
+        _pageControl = [[UIPageControl alloc] init];
         
-        UIImage *image1 = [UIImage imageNamed:@"img_01"];
-        UIImage *image2 = [UIImage imageNamed:@"img_02"];
-        UIImage *image3 = [UIImage imageNamed:@"img_03"];
-        
-        _tempArray = @[image1, image2, image3];
+        _pageControl.currentPageIndicatorTintColor = MainStyleClolr;
+        _pageControl.pageIndicatorTintColor = [UIColor purpleColor];
     }
-    return _tempArray;
+    return _pageControl;
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    
-    
+- (void)setTempArray:(NSArray *)tempArray {
+    if (_tempArray != tempArray) {
+        _tempArray = tempArray;
+        
+        self.pageControl.numberOfPages = _tempArray.count;
+        [self.collectionView reloadData];
+    }
 }
+
+
+- (NSTimer *)timer {
+    
+    if(_timer == nil) {
+   
+        _timer = [NSTimer scheduledTimerWithTimeInterval:4
+                                                  target:self
+                                                selector:@selector(scrollToforward)
+                                                userInfo:nil
+                                                 repeats:YES];
+    }
+    
+    return _timer;
+}
+
 
 @end

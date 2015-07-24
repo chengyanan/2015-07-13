@@ -14,6 +14,8 @@
 		40366C091B5F2FEB00E94B98 /* YNDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 40366C081B5F2FEB00E94B98 /* YNDropDownMenu.m */; };
 		4062B3F11B54EE8B00175EE1 /* UITextField+LeftAndRightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4062B3F01B54EE8B00175EE1 /* UITextField+LeftAndRightView.m */; };
 		406DCA271B57661E00FF569E /* YNOrderAndReserveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 406DCA261B57661E00FF569E /* YNOrderAndReserveViewController.m */; };
+		40791E931B61F9E30059F74E /* YNLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 40791E921B61F9E30059F74E /* YNLocation.m */; };
+		40791E951B6212510059F74E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40791E941B6212510059F74E /* CoreLocation.framework */; };
 		40F583441B60DB2300B117AC /* YNScrollCycleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F583431B60DB2300B117AC /* YNScrollCycleCell.m */; };
 		40F583471B60DC0800B117AC /* YNScrollCycleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F583461B60DC0800B117AC /* YNScrollCycleView.m */; };
 		5E47D1F7B1B0420007E10D4D /* libPods-2015-07－13.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B68043E448964FAD805436B /* libPods-2015-07－13.a */; };
@@ -59,6 +61,9 @@
 		4062B3F01B54EE8B00175EE1 /* UITextField+LeftAndRightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+LeftAndRightView.m"; sourceTree = "<group>"; };
 		406DCA251B57661E00FF569E /* YNOrderAndReserveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNOrderAndReserveViewController.h; sourceTree = "<group>"; };
 		406DCA261B57661E00FF569E /* YNOrderAndReserveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNOrderAndReserveViewController.m; sourceTree = "<group>"; };
+		40791E911B61F9E30059F74E /* YNLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNLocation.h; sourceTree = "<group>"; };
+		40791E921B61F9E30059F74E /* YNLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNLocation.m; sourceTree = "<group>"; };
+		40791E941B6212510059F74E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		40F583421B60DB2300B117AC /* YNScrollCycleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNScrollCycleCell.h; sourceTree = "<group>"; };
 		40F583431B60DB2300B117AC /* YNScrollCycleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNScrollCycleCell.m; sourceTree = "<group>"; };
 		40F583451B60DC0800B117AC /* YNScrollCycleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNScrollCycleView.h; sourceTree = "<group>"; };
@@ -99,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40791E951B6212510059F74E /* CoreLocation.framework in Frameworks */,
 				402FAB0B1B56457C000FA55B /* MessageUI.framework in Frameworks */,
 				5E47D1F7B1B0420007E10D4D /* libPods-2015-07－13.a in Frameworks */,
 			);
@@ -160,6 +166,15 @@
 			path = orderAndReserve;
 			sourceTree = "<group>";
 		};
+		40791E901B61F9C30059F74E /* tool */ = {
+			isa = PBXGroup;
+			children = (
+				40791E911B61F9E30059F74E /* YNLocation.h */,
+				40791E921B61F9E30059F74E /* YNLocation.m */,
+			);
+			path = tool;
+			sourceTree = "<group>";
+		};
 		40F5833D1B60DAB200B117AC /* scroll cycle */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +198,7 @@
 		B57D2B3BF47894DB4CC9FC0C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				40791E941B6212510059F74E /* CoreLocation.framework */,
 				402FAB0A1B56457C000FA55B /* MessageUI.framework */,
 				3B68043E448964FAD805436B /* libPods-2015-07－13.a */,
 			);
@@ -270,6 +286,7 @@
 		CEAE9F2D1B535CFB00D4B9A6 /* homePage1 */ = {
 			isa = PBXGroup;
 			children = (
+				40791E901B61F9C30059F74E /* tool */,
 				CEAE9F311B535DA600D4B9A6 /* controller */,
 				CEAE9F321B535DA600D4B9A6 /* model */,
 				CEAE9F331B535DA600D4B9A6 /* view */,
@@ -553,6 +570,7 @@
 			files = (
 				CEAE9F061B53573300D4B9A6 /* AppDelegate.m in Sources */,
 				CEAE9F4B1B535EBD00D4B9A6 /* YNMoreViewController.m in Sources */,
+				40791E931B61F9E30059F74E /* YNLocation.m in Sources */,
 				40F583441B60DB2300B117AC /* YNScrollCycleCell.m in Sources */,
 				CEAE9F481B535EA500D4B9A6 /* YNMineViewController.m in Sources */,
 				CEAE9F4E1B5360E900D4B9A6 /* YNNavigationController.m in Sources */,
