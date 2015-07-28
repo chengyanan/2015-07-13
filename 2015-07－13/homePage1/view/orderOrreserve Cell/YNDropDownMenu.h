@@ -35,4 +35,6 @@
 
 @property (nonatomic, strong) NSArray *menuTitleArray;
 
+@property (nonatomic, strong) NSArray *dataArray;
+
 @end

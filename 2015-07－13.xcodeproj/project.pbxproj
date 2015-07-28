@@ -16,6 +16,11 @@
 		406DCA271B57661E00FF569E /* YNOrderAndReserveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 406DCA261B57661E00FF569E /* YNOrderAndReserveViewController.m */; };
 		40791E931B61F9E30059F74E /* YNLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 40791E921B61F9E30059F74E /* YNLocation.m */; };
 		40791E951B6212510059F74E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40791E941B6212510059F74E /* CoreLocation.framework */; };
+		40B521D21B65D426006C1971 /* orderOrReseverData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40B521D11B65D426006C1971 /* orderOrReseverData.plist */; };
+		40B521D51B65E14C006C1971 /* YNBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B521D41B65E14C006C1971 /* YNBaseModel.m */; };
+		40B521D81B65E322006C1971 /* YNElementModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B521D71B65E322006C1971 /* YNElementModel.m */; };
+		40B521DB1B65E706006C1971 /* YNLevelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B521DA1B65E706006C1971 /* YNLevelModel.m */; };
+		40B521DE1B66022B006C1971 /* YNSecondLevelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B521DD1B66022B006C1971 /* YNSecondLevelModel.m */; };
 		40F583441B60DB2300B117AC /* YNScrollCycleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F583431B60DB2300B117AC /* YNScrollCycleCell.m */; };
 		40F583471B60DC0800B117AC /* YNScrollCycleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F583461B60DC0800B117AC /* YNScrollCycleView.m */; };
 		5E47D1F7B1B0420007E10D4D /* libPods-2015-07－13.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B68043E448964FAD805436B /* libPods-2015-07－13.a */; };
@@ -64,6 +69,15 @@
 		40791E911B61F9E30059F74E /* YNLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNLocation.h; sourceTree = "<group>"; };
 		40791E921B61F9E30059F74E /* YNLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNLocation.m; sourceTree = "<group>"; };
 		40791E941B6212510059F74E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		40B521D11B65D426006C1971 /* orderOrReseverData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = orderOrReseverData.plist; sourceTree = "<group>"; };
+		40B521D31B65E14C006C1971 /* YNBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNBaseModel.h; sourceTree = "<group>"; };
+		40B521D41B65E14C006C1971 /* YNBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNBaseModel.m; sourceTree = "<group>"; };
+		40B521D61B65E322006C1971 /* YNElementModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNElementModel.h; sourceTree = "<group>"; };
+		40B521D71B65E322006C1971 /* YNElementModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNElementModel.m; sourceTree = "<group>"; };
+		40B521D91B65E706006C1971 /* YNLevelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNLevelModel.h; sourceTree = "<group>"; };
+		40B521DA1B65E706006C1971 /* YNLevelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNLevelModel.m; sourceTree = "<group>"; };
+		40B521DC1B66022B006C1971 /* YNSecondLevelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNSecondLevelModel.h; sourceTree = "<group>"; };
+		40B521DD1B66022B006C1971 /* YNSecondLevelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNSecondLevelModel.m; sourceTree = "<group>"; };
 		40F583421B60DB2300B117AC /* YNScrollCycleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNScrollCycleCell.h; sourceTree = "<group>"; };
 		40F583431B60DB2300B117AC /* YNScrollCycleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNScrollCycleCell.m; sourceTree = "<group>"; };
 		40F583451B60DC0800B117AC /* YNScrollCycleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNScrollCycleView.h; sourceTree = "<group>"; };
@@ -251,6 +265,7 @@
 				CEAE9F011B53573300D4B9A6 /* Info.plist */,
 				CEAE9F021B53573300D4B9A6 /* main.m */,
 				402FAB0C1B56653C000FA55B /* PrefixHeader.pch */,
+				40B521D11B65D426006C1971 /* orderOrReseverData.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -338,6 +353,14 @@
 		CEAE9F321B535DA600D4B9A6 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				40B521D31B65E14C006C1971 /* YNBaseModel.h */,
+				40B521D41B65E14C006C1971 /* YNBaseModel.m */,
+				40B521D61B65E322006C1971 /* YNElementModel.h */,
+				40B521D71B65E322006C1971 /* YNElementModel.m */,
+				40B521D91B65E706006C1971 /* YNLevelModel.h */,
+				40B521DA1B65E706006C1971 /* YNLevelModel.m */,
+				40B521DC1B66022B006C1971 /* YNSecondLevelModel.h */,
+				40B521DD1B66022B006C1971 /* YNSecondLevelModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -516,6 +539,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEAE9F0C1B53573300D4B9A6 /* Main.storyboard in Resources */,
+				40B521D21B65D426006C1971 /* orderOrReseverData.plist in Resources */,
 				CEAE9F111B53573300D4B9A6 /* LaunchScreen.xib in Resources */,
 				CEAE9F0E1B53573300D4B9A6 /* Images.xcassets in Resources */,
 			);
@@ -571,6 +595,7 @@
 				CEAE9F061B53573300D4B9A6 /* AppDelegate.m in Sources */,
 				CEAE9F4B1B535EBD00D4B9A6 /* YNMoreViewController.m in Sources */,
 				40791E931B61F9E30059F74E /* YNLocation.m in Sources */,
+				40B521DB1B65E706006C1971 /* YNLevelModel.m in Sources */,
 				40F583441B60DB2300B117AC /* YNScrollCycleCell.m in Sources */,
 				CEAE9F481B535EA500D4B9A6 /* YNMineViewController.m in Sources */,
 				CEAE9F4E1B5360E900D4B9A6 /* YNNavigationController.m in Sources */,
@@ -583,8 +608,11 @@
 				CEAE9F451B535E8A00D4B9A6 /* YNServiceViewController.m in Sources */,
 				402BC2B41B5769A500E6A429 /* YNOrderOrreserveCell.m in Sources */,
 				402FAB091B55F42F000FA55B /* YNTool.m in Sources */,
+				40B521D51B65E14C006C1971 /* YNBaseModel.m in Sources */,
+				40B521DE1B66022B006C1971 /* YNSecondLevelModel.m in Sources */,
 				CEAE9F031B53573300D4B9A6 /* main.m in Sources */,
 				CEAE9F421B535E6800D4B9A6 /* YNHomePageViewController.m in Sources */,
+				40B521D81B65E322006C1971 /* YNElementModel.m in Sources */,
 				4062B3F11B54EE8B00175EE1 /* UITextField+LeftAndRightView.m in Sources */,
 				40F583471B60DC0800B117AC /* YNScrollCycleView.m in Sources */,
 			);

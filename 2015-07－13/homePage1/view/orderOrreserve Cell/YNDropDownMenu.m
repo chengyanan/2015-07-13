@@ -7,11 +7,20 @@
 //
 
 #import "YNDropDownMenu.h"
+#import "YNLevelModel.h"
+#import "YNSecondLevelModel.h"
+#import "YNBaseModel.h"
+#import "YNElementModel.h"
 
 #define ScreenWidth [UIScreen mainScreen].bounds.size.width
-#define ScreenHeight 44
+
+//如果加在tableview的header上就为SelfHeight， 如果加在controller上为 SelfHeight ＋ 64
+#define SelfHeight 44
+
+#define TableViewY SelfHeight+64
 #define TableView1Width ScreenWidth * 0.4
 #define TableView2Width ScreenWidth-TableView1Width
+
 @interface YNDropDownMenu()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, assign) NSInteger numOfMenu;
@@ -31,6 +40,9 @@
 @property (nonatomic, copy) NSArray *indicators;
 @property (nonatomic, copy) NSArray *bgLayers;
 
+
+@property (nonatomic, assign) NSInteger secondRow;
+
 @end
 
 @implementation YNDropDownMenu
@@ -45,14 +57,14 @@
         [self addGestureRecognizer:tapGesture];
         
         //background init and tapped
-        _backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, [UIScreen mainScreen].bounds.size.height)];
+        _backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, TableViewY, ScreenWidth, [UIScreen mainScreen].bounds.size.height)];
         _backGroundView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.0];
         _backGroundView.opaque = NO;
         UIGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backgroundTapped:)];
         [_backGroundView addGestureRecognizer:gesture];
         
         //add bottom shadow
-        UIView *bottomShadow = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenHeight-0.5, ScreenWidth, 0.5)];
+        UIView *bottomShadow = [[UIView alloc] initWithFrame:CGRectMake(0, SelfHeight-0.5, ScreenWidth, 0.5)];
         bottomShadow.backgroundColor = [UIColor lightGrayColor];
         [self addSubview:bottomShadow];
         
@@ -88,7 +100,8 @@
         
         
         
-//        [_tableView reloadData];
+        [self.tableView1 reloadData];
+//        [self.tableView2 reloadData];
         
         [self animateIdicator:_indicators[tapIndex] background:_backGroundView title:_titles[tapIndex] forward:YES complecte:^{
             _show = YES;
@@ -130,8 +143,11 @@
 
 - (void)animateBackGroundView:(UIView *)view show:(BOOL)show complete:(void(^)())complete {
     if (show) {
-        [self.superview addSubview:view];
-        [view.superview addSubview:self];
+        
+        [self.superview.superview addSubview:view];
+        
+//        [self.superview addSubview:view];
+//        [view.superview addSubview:self];
         
         [UIView animateWithDuration:0.2 animations:^{
             view.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
@@ -150,33 +166,35 @@
     if (show) {
         
         
-        CGFloat tableViewHeight = ([self.tableView1 numberOfRowsInSection:0] > 5) ? (5 * self.tableView1.rowHeight) : ([self.tableView1 numberOfRowsInSection:0] * self.tableView1.rowHeight);
+//        CGFloat tableViewHeight = ([self.tableView1 numberOfRowsInSection:0] > 5) ? (5 * self.tableView1.rowHeight) : ([self.tableView1 numberOfRowsInSection:0] * self.tableView1.rowHeight);
+        
+        CGFloat tableViewHeight = self.tableView1.rowHeight *5;
         
         if (number == 2) {
             
            
                
-//                self.tableView1.frame = CGRectMake(0, 64 + ScreenHeight, TableView1Width, 0);
+//                self.tableView1.frame = CGRectMake(0, 64 + SelfHeight, TableView1Width, 0);
 //                [self.superview addSubview:self.tableView1];
 //                
 //                CGFloat tableViewHeight = ([self.tableView1 numberOfRowsInSection:0] > 5) ? (5 * self.tableView1.rowHeight) : ([self.tableView1 numberOfRowsInSection:0] * self.tableView1.rowHeight);
 //                
 //                [UIView animateWithDuration:0.2 animations:^{
-//                    self.tableView1.frame = CGRectMake(0, 64 + ScreenHeight , TableView1Width, tableViewHeight);
+//                    self.tableView1.frame = CGRectMake(0, 64 + SelfHeight , TableView1Width, tableViewHeight);
 //                }];
 //                
-//                self.tableView2.frame = CGRectMake(TableView1Width, 64 + ScreenHeight, TableView2Width, 0);
+//                self.tableView2.frame = CGRectMake(TableView1Width, 64 + SelfHeight, TableView2Width, 0);
 //                [self.superview addSubview:self.tableView2];
 //                
 //                [UIView animateWithDuration:0.2 animations:^{
-//                    self.tableView2.frame = CGRectMake(TableView1Width, 64 + ScreenHeight , TableView2Width, tableViewHeight);
+//                    self.tableView2.frame = CGRectMake(TableView1Width, 64 + SelfHeight , TableView2Width, tableViewHeight);
 //                }];
             
-            self.tableView1.frame = CGRectMake(0, 64 + ScreenHeight , TableView1Width, tableViewHeight);
-            self.tableView2.frame = CGRectMake(TableView1Width, 64 + ScreenHeight , TableView2Width, tableViewHeight);
+            self.tableView1.frame = CGRectMake(0,TableViewY , TableView1Width, tableViewHeight);
+            self.tableView2.frame = CGRectMake(TableView1Width,TableViewY , TableView2Width, tableViewHeight);
             
-            [self.superview addSubview:self.tableView1];
-            [self.superview addSubview:self.tableView2];
+            [self.superview.superview addSubview:self.tableView1];
+            [self.superview.superview addSubview:self.tableView2];
             
             [_tableView1 reloadData];
             [_tableView2 reloadData];
@@ -184,17 +202,17 @@
             
         } else if (number == 1) {
        
-//            self.tableView1.frame = CGRectMake(0, 64 + ScreenHeight, ScreenWidth, 0);
+//            self.tableView1.frame = CGRectMake(0, 64 + SelfHeight, ScreenWidth, 0);
 //            [self.superview addSubview:self.tableView1];
 //            
 //            CGFloat tableViewHeight = ([self.tableView1 numberOfRowsInSection:0] > 5) ? (5 * self.tableView1.rowHeight) : ([self.tableView1 numberOfRowsInSection:0] * self.tableView1.rowHeight);
 //            
 //            [UIView animateWithDuration:0.2 animations:^{
-//                self.tableView1.frame = CGRectMake(0, 64 + ScreenHeight , ScreenWidth, tableViewHeight);
+//                self.tableView1.frame = CGRectMake(0, 64 + SelfHeight , ScreenWidth, tableViewHeight);
 //            }];
 
-            self.tableView2.frame = CGRectMake(0, 64 + ScreenHeight , ScreenWidth, tableViewHeight);
-            [self.superview addSubview:self.tableView2];
+            self.tableView2.frame = CGRectMake(0, TableViewY , ScreenWidth, tableViewHeight);
+            [self.superview.superview addSubview:self.tableView2];
             
             [self.tableView2 reloadData];
         }
@@ -202,7 +220,7 @@
     } else {
         
         [UIView animateWithDuration:0.2 animations:^{
-            _tableView1.frame = CGRectMake(0, 64 + ScreenHeight, TableView1Width, 0);
+            _tableView1.frame = CGRectMake(0, TableViewY, TableView1Width, 0);
         } completion:^(BOOL finished) {
             [_tableView1 removeFromSuperview];
         }];
@@ -213,7 +231,7 @@
 //             [_tableView2 removeFromSuperview];
             
             [UIView animateWithDuration:0.2 animations:^{
-                _tableView2.frame = CGRectMake(TableView1Width, 64 + ScreenHeight, TableView2Width , 0);
+                _tableView2.frame = CGRectMake(TableView1Width, TableViewY, TableView2Width , 0);
             } completion:^(BOOL finished) {
                 [_tableView2 removeFromSuperview];
             }];
@@ -221,7 +239,7 @@
         }else if (number == 1) {
        
             [UIView animateWithDuration:0.2 animations:^{
-                _tableView2.frame = CGRectMake(0, 64 + ScreenHeight, ScreenWidth, 0);
+                _tableView2.frame = CGRectMake(0, TableViewY, ScreenWidth, 0);
             } completion:^(BOOL finished) {
                 [_tableView2 removeFromSuperview];
             }];
@@ -277,23 +295,121 @@
     
     if (self.currentSelectedMenudIndex ==0) {
         
+         YNLevelModel *model = self.dataArray[0];
+        
+        if (tableView.tag == 1) {
+            
+            NSInteger count = model.array.count;
+            
+            return count;
+            
+        } else if(tableView.tag == 2){
+            
+            if (self.secondRow >= 0) {
+                
+                YNSecondLevelModel *secondModel = model.array[self.secondRow];
+                return secondModel.array.count;
+            }
+            
+        }
         
     } else if (  self.currentSelectedMenudIndex == 1){
+        
+        YNLevelModel *model = self.dataArray[1];
+        
+        if (tableView.tag == 1) {
+            
+            return model.array.count;
+            
+        } else if(tableView.tag == 2){
+            
+            if (self.secondRow >= 0) {
+                
+                YNSecondLevelModel *secondModel = model.array[self.secondRow];
+                return secondModel.array.count;
+            }
+            
+        }
         
    
     } else if (self.currentSelectedMenudIndex == 2) {
         
-   
+        YNLevelModel *model = self.dataArray[2];
+        
+        if (tableView.tag == 2) {
+            
+            return model.array.count;
+            
+        }
+        
     }
     return 10;
 }
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     static NSString *identify = @"CELL_ONLINE";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     }
-    cell.textLabel.text = @"rose";
+    
+    
+    if (self.currentSelectedMenudIndex ==0) {
+        
+        YNLevelModel *model = self.dataArray[0];
+        
+        if (tableView.tag == 1) {
+        
+            YNSecondLevelModel *secondlevelMode = model.array[indexPath.row];
+            cell.textLabel.text = secondlevelMode.name;
+            
+        } else if(tableView.tag == 2){
+            
+            if (self.secondRow >= 0) {
+                
+                YNSecondLevelModel *secondModel = model.array[self.secondRow];
+                YNElementModel *element = secondModel.array[indexPath.row];
+                cell.textLabel.text = element.name;
+            }
+            
+        }
+        
+    } else if (  self.currentSelectedMenudIndex == 1){
+        
+        YNLevelModel *model = self.dataArray[1];
+        
+        if (tableView.tag == 1) {
+            
+            YNSecondLevelModel *secondlevelMode = model.array[indexPath.row];
+            cell.textLabel.text = secondlevelMode.name;
+            
+        } else if(tableView.tag == 2){
+            
+            if (self.secondRow >= 0) {
+                
+                YNSecondLevelModel *secondmodel = model.array[self.secondRow];
+                YNElementModel *element = secondmodel.array[indexPath.row];
+                cell.textLabel.text = element.name;
+            }
+            
+        }
+        
+        
+    } else if (self.currentSelectedMenudIndex == 2) {
+        
+        YNLevelModel *model = self.dataArray[2];
+        
+        if (tableView.tag == 2) {
+            
+            YNSecondLevelModel *secondlevelMode = model.array[indexPath.row];
+            
+            cell.textLabel.text = secondlevelMode.name;
+            
+        }
+        
+    }
     
     return cell;
 }
@@ -303,6 +419,7 @@
     
     if (tableView.tag == 1) {
         
+        self.secondRow = indexPath.row;
         
         [self.tableView2 reloadData];
         
@@ -321,7 +438,30 @@
     CATextLayer *title = (CATextLayer *)_titles[_currentSelectedMenudIndex];
 //    title.string = [self.dataSource menu:self titleForRowAtIndexPath:[DOPIndexPath indexPathWithCol:self.currentSelectedMenudIndex row:row]];
     
-    title.string = @"rose";
+    
+    
+    if (self.currentSelectedMenudIndex == 0) {
+        
+        YNLevelModel *levleModel = self.dataArray[0];
+        YNSecondLevelModel *secondModel = levleModel.array[self.secondRow];
+        YNElementModel *model = secondModel.array[row];
+        title.string = model.name;
+        
+    } else if (self.currentSelectedMenudIndex == 1) {
+        
+        YNLevelModel *levleModel = self.dataArray[1];
+        YNSecondLevelModel *secondModel = levleModel.array[self.secondRow];
+        YNElementModel *model = secondModel.array[row];
+        title.string = model.name;
+   
+    } else if (self.currentSelectedMenudIndex == 2) {
+        
+        YNLevelModel *levleModel = self.dataArray[2];
+        YNSecondLevelModel *secondModel = levleModel.array[row];
+        title.string = secondModel.name;
+    }
+    
+//    title.string = @"rose";
     
     [self animateIdicator:_indicators[_currentSelectedMenudIndex] background:_backGroundView title:_titles[_currentSelectedMenudIndex] forward:NO complecte:^{
         _show = NO;
@@ -336,7 +476,7 @@
 - (CALayer *)createBgLayerWithColor:(UIColor *)color andPosition:(CGPoint)position {
     CALayer *layer = [CALayer layer];
     layer.position = position;
-    layer.bounds = CGRectMake(0, 0, ScreenWidth/self.numOfMenu, ScreenHeight-1);
+    layer.bounds = CGRectMake(0, 0, ScreenWidth/self.numOfMenu, SelfHeight-1);
     layer.backgroundColor = color.CGColor;
     //    NSLog(@"bglayer bounds:%@",NSStringFromCGRect(layer.bounds));
     //    NSLog(@"bglayer position:%@", NSStringFromCGPoint(position));
@@ -431,27 +571,27 @@
     
     for (int i = 0; i < _numOfMenu; i++) {
         //bgLayer
-        CGPoint bgLayerPosition = CGPointMake((i+0.5)*bgLayerInterval, ScreenHeight/2);
+        CGPoint bgLayerPosition = CGPointMake((i+0.5)*bgLayerInterval, SelfHeight/2);
         CALayer *bgLayer = [self createBgLayerWithColor:[UIColor whiteColor] andPosition:bgLayerPosition];
         [self.layer addSublayer:bgLayer];
         [tempBgLayers addObject:bgLayer];
         
         //title
-        CGPoint titlePosition = CGPointMake( (i * 2 + 1) * textLayerInterval , ScreenHeight / 2);
+        CGPoint titlePosition = CGPointMake( (i * 2 + 1) * textLayerInterval , SelfHeight / 2);
         NSString *titleString = self.menuTitleArray[i];
         CATextLayer *title = [self createTextLayerWithNSString:titleString withColor:self.textColor andPosition:titlePosition];
         [self.layer addSublayer:title];
         [tempTitles addObject:title];
 
         //indicator
-        CAShapeLayer *indicator = [self createIndicatorWithColor:self.indicatorColor andPosition:CGPointMake(titlePosition.x + title.bounds.size.width / 2 + 8, ScreenHeight / 2)];
+        CAShapeLayer *indicator = [self createIndicatorWithColor:self.indicatorColor andPosition:CGPointMake(titlePosition.x + title.bounds.size.width / 2 + 8, SelfHeight / 2)];
         [self.layer addSublayer:indicator];
         [tempIndicators addObject:indicator];
         
         //separator
         if (i != (self.menuTitleArray.count-1)) {
             
-            CGPoint separatorPosition = CGPointMake(CGRectGetMaxX(bgLayer.frame)-1, ScreenHeight/2) ;
+            CGPoint separatorPosition = CGPointMake(CGRectGetMaxX(bgLayer.frame)-1, SelfHeight/2) ;
             
             CAShapeLayer *separator = [self createSeparatorWithPosition:separatorPosition];
             
@@ -521,6 +661,15 @@
         _tableView2.dataSource = self;
     }
     return _tableView2;
+}
+
+- (void)setDataArray:(NSArray *)dataArray {
+    if (_dataArray != dataArray) {
+        _dataArray = [NSArray arrayWithArray:dataArray];
+        
+        [self.tableView1 reloadData];
+//        [self.tableView2 reloadData];
+    }
 }
 
 @end
