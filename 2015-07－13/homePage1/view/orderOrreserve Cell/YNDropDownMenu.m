@@ -21,6 +21,8 @@
 #define TableView1Width ScreenWidth * 0.4
 #define TableView2Width ScreenWidth-TableView1Width
 
+#define MenuFont 14.0
+
 @interface YNDropDownMenu()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, assign) NSInteger numOfMenu;
@@ -85,7 +87,7 @@
                     
                 }];
             }];
-            [(CALayer *)self.bgLayers[i] setBackgroundColor:[UIColor whiteColor].CGColor];
+//            [(CALayer *)self.bgLayers[i] setBackgroundColor:[UIColor whiteColor].CGColor];
         }
     }
     
@@ -94,7 +96,7 @@
             _currentSelectedMenudIndex = tapIndex;
             _show = NO;
         }];
-        [(CALayer *)self.bgLayers[tapIndex] setBackgroundColor:[UIColor whiteColor].CGColor];
+//        [(CALayer *)self.bgLayers[tapIndex] setBackgroundColor:[UIColor whiteColor].CGColor];
     } else {
         _currentSelectedMenudIndex = tapIndex;
         
@@ -106,7 +108,7 @@
         [self animateIdicator:_indicators[tapIndex] background:_backGroundView title:_titles[tapIndex] forward:YES complecte:^{
             _show = YES;
         }];
-        [(CALayer *)self.bgLayers[tapIndex] setBackgroundColor:[UIColor colorWithWhite:0.9 alpha:1.0].CGColor];
+//        [(CALayer *)self.bgLayers[tapIndex] setBackgroundColor:[UIColor colorWithWhite:0.9 alpha:1.0].CGColor];
     }
 }
 
@@ -136,6 +138,12 @@
         [indicator setValue:anim.values.lastObject forKeyPath:anim.keyPath];
     }
     
+    if (forward) {
+        indicator.fillColor = MainStyleClolr.CGColor;
+    } else {
+        indicator.fillColor = [UIColor blackColor].CGColor;
+    }
+    
     [CATransaction commit];
     
     complete();
@@ -163,16 +171,18 @@
 }
 
 - (void)animatenumberOfTableView:(NSInteger)number show:(BOOL)show  complete:(void(^)())complete {
+    
     if (show) {
         
+        [_tableView1 reloadData];
+        [_tableView2 reloadData];
+
+        CGFloat tableViewHeight = ([self.tableView2 numberOfRowsInSection:0] > 7) ? (7 * self.tableView2.rowHeight) : ([self.tableView2 numberOfRowsInSection:0] * self.tableView2.rowHeight) + self.tableView2.rowHeight;
         
-//        CGFloat tableViewHeight = ([self.tableView1 numberOfRowsInSection:0] > 5) ? (5 * self.tableView1.rowHeight) : ([self.tableView1 numberOfRowsInSection:0] * self.tableView1.rowHeight);
-        
-        CGFloat tableViewHeight = self.tableView1.rowHeight *5;
+//        CGFloat tableViewHeight = self.tableView1.rowHeight *5;
         
         if (number == 2) {
             
-           
                
 //                self.tableView1.frame = CGRectMake(0, 64 + SelfHeight, TableView1Width, 0);
 //                [self.superview addSubview:self.tableView1];
@@ -195,10 +205,6 @@
             
             [self.superview.superview addSubview:self.tableView1];
             [self.superview.superview addSubview:self.tableView2];
-            
-            [_tableView1 reloadData];
-            [_tableView2 reloadData];
-            
             
         } else if (number == 1) {
        
@@ -256,6 +262,15 @@
     CGSize size = [self calculateTitleSizeWithString:title.string];
     CGFloat sizeWidth = (size.width < (self.frame.size.width / _numOfMenu) - 25) ? size.width : self.frame.size.width / _numOfMenu - 25;
     title.bounds = CGRectMake(0, 0, sizeWidth, size.height);
+    
+    if (show) {
+         title.foregroundColor = MainStyleClolr.CGColor;
+    } else {
+   
+        title.foregroundColor = [UIColor blackColor].CGColor;
+    }
+   
+    
     complete();
 }
 
@@ -353,8 +368,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+        cell.textLabel.font = [UIFont systemFontOfSize:MenuFont];
     }
-    
     
     if (self.currentSelectedMenudIndex ==0) {
         
@@ -486,9 +501,10 @@
 
 - (CGSize)calculateTitleSizeWithString:(NSString *)string
 {
-    CGFloat fontSize = 14.0;
+    CGFloat fontSize = MenuFont;
     NSDictionary *dic = @{NSFontAttributeName: [UIFont systemFontOfSize:fontSize]};
     CGSize size = [string boundingRectWithSize:CGSizeMake(280, 0) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:dic context:nil].size;
+    
     return size;
 }
 
@@ -501,7 +517,7 @@
     CGFloat sizeWidth = (size.width < (ScreenWidth / _numOfMenu) - 25) ? size.width : ScreenWidth / _numOfMenu - 25;
     layer.bounds = CGRectMake(0, 0, sizeWidth, size.height);
     layer.string = string;
-    layer.fontSize = 14.0;
+    layer.fontSize = MenuFont;
     layer.alignmentMode = kCAAlignmentCenter;
     layer.foregroundColor = color.CGColor;
     

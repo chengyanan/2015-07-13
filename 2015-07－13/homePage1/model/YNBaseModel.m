@@ -9,6 +9,7 @@
 #import "YNBaseModel.h"
 
 @implementation YNBaseModel
+
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
     self = [super init];
     if (self) {

@@ -17,34 +17,28 @@
 
 @implementation YNLocation
 
-
-- (instancetype)init {
-    self = [super init];
-    if (self) {
+- (void)startLocate {
+    
+    
+    if ([CLLocationManager locationServicesEnabled]) {
         
-        if ([CLLocationManager locationServicesEnabled]) {
-            
-            NSLog(@"定位未开启");
-        }
-        
-        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
-            
-            [self.locationManger requestWhenInUseAuthorization];
-            
-        } else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse){
-            
-            self.locationManger.delegate = self;
-            self.locationManger.desiredAccuracy = kCLLocationAccuracyBest;
-            self.locationManger.distanceFilter = 1000;
-            
-        }
-        
+        NSLog(@"定位未开启");
     }
     
-    return self;
-}
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+        
+        if ([self.locationManger respondsToSelector:@selector(requestWhenInUseAuthorization )]) {
+            [self.locationManger requestWhenInUseAuthorization];
+            
+        }
 
-- (void)startLocate {
+    } else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse){
+        
+        self.locationManger.delegate = self;
+        self.locationManger.desiredAccuracy = kCLLocationAccuracyBest;
+        self.locationManger.distanceFilter = 1000;
+        
+    }
     
      [self.locationManger startUpdatingLocation];
 }
@@ -61,6 +55,11 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     
     
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    
+//    NSLog(@"didChangeAuthorizationStatus - %d", status);
 }
 
 @end
