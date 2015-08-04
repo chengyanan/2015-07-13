@@ -7,11 +7,11 @@
 //
 
 #import "YNLocation.h"
-#import <CoreLocation/CoreLocation.h>
+
 
 @interface YNLocation()<CLLocationManagerDelegate>
 
-@property (nonatomic, strong) CLLocationManager *locationManger;
+
 
 @end
 
@@ -19,28 +19,31 @@
 
 - (void)startLocate {
     
+    BOOL locationServicesEnabled = [CLLocationManager locationServicesEnabled];
     
-    if ([CLLocationManager locationServicesEnabled]) {
+    if (locationServicesEnabled) {
+        
+        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+            
+            if ([self.locationManger respondsToSelector:@selector(requestWhenInUseAuthorization )]) {
+                [self.locationManger requestWhenInUseAuthorization];
+                
+            }
+            
+        } else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse){
+            
+//            self.locationManger.delegate = self;
+            self.locationManger.desiredAccuracy = kCLLocationAccuracyBest;
+            self.locationManger.distanceFilter = 10;
+        }
+        
+        [self.locationManger startUpdatingLocation];
+        
+    } else {
         
         NSLog(@"定位未开启");
     }
     
-    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
-        
-        if ([self.locationManger respondsToSelector:@selector(requestWhenInUseAuthorization )]) {
-            [self.locationManger requestWhenInUseAuthorization];
-            
-        }
-
-    } else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse){
-        
-        self.locationManger.delegate = self;
-        self.locationManger.desiredAccuracy = kCLLocationAccuracyBest;
-        self.locationManger.distanceFilter = 1000;
-        
-    }
-    
-     [self.locationManger startUpdatingLocation];
 }
 
 #pragma mark - setters and getters
@@ -52,14 +55,14 @@
     return _locationManger;
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    
-    
-}
-
-- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
-    
+//- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+//    
+//    NSLog(@"didUpdateLocations");
+//}
+//
+//- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+//    
 //    NSLog(@"didChangeAuthorizationStatus - %d", status);
-}
+//}
 
 @end

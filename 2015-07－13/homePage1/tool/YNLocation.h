@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @protocol YNLocationDelegate <NSObject>
 
@@ -15,6 +16,8 @@
 @end
 
 @interface YNLocation : NSObject
+
+@property (nonatomic, strong) CLLocationManager *locationManger;
 
 - (void)startLocate;
 

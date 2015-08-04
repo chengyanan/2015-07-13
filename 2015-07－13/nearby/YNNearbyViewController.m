@@ -7,7 +7,6 @@
 //
 
 #import "YNNearbyViewController.h"
-#import "YNLocation.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "YNBaseAnnotation.h"
@@ -17,12 +16,15 @@
 #import "YNCallOutContentView.h"
 
 
-@interface YNNearbyViewController ()<MKMapViewDelegate>
+@interface YNNearbyViewController ()<MKMapViewDelegate, CLLocationManagerDelegate>
 @property (nonatomic, strong)  MKMapView *mapview;
-@property (nonatomic, strong)  YNLocation *location;
 
 @property (nonatomic, strong)  YNCallOutAnnotation *callOutAnnotation;
 @property (nonatomic, strong)  YNCallOutAnnotationView *callOutAnnotationView;
+
+@property (nonatomic, strong) CLLocationManager *locationManger;
+@property (nonatomic, strong) CLLocation *currentLocation;
+
 
 @end
 
@@ -30,9 +32,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self.location startLocate];
     
     [self.view addSubview:self.mapview];
+    
+    
+    
+    [self startLocate];
 }
 #pragma mark - life cycle
 #pragma mark - MKMapViewDelegate
@@ -132,15 +137,89 @@
     [self.mapview selectAnnotation:locationAnnotation animated:YES];
 }
 
-#pragma mark - <#CustomDelegate#>
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
+    
+//    CLLocationCoordinate2D locationCoordinate2D = userLocation.location.coordinate;
+    CLGeocoder *geocder = [[CLGeocoder alloc] init];
+    [geocder reverseGeocodeLocation:userLocation.location completionHandler:^(NSArray *placemarks, NSError *error) {
+        
+        for (CLPlacemark *placemark in placemarks) {
+            
+             NSLog(@"name - %@", placemark.name);
+            NSLog(@"thoroughfare - %@", placemark.thoroughfare);
+            NSLog(@"subThoroughfare - %@", placemark.subThoroughfare);
+            NSLog(@"locality - %@", placemark.locality);//城市
+            NSLog(@"subLocality - %@", placemark.subLocality);//区
+            NSLog(@"administrativeArea - %@", placemark.administrativeArea);//省份
+            NSLog(@"subAdministrativeArea - %@", placemark.subAdministrativeArea);
+            NSLog(@"postalCode - %@", placemark.postalCode);
+            NSLog(@"ISOcountryCode - %@", placemark.ISOcountryCode);//国家代表CN
+            NSLog(@"country - %@", placemark.country);//国家
+            NSLog(@"inlandWater - %@", placemark.inlandWater);
+            NSLog(@"ocean - %@", placemark.ocean);
+            NSLog(@"areasOfInterest - %@", placemark.areasOfInterest);
+    
+        }
+       
+    }];
+    
+    NSLog(@"didUpdateUserLocation %@", userLocation.title);
+}
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    
+    CLLocation *newLocation = locations.lastObject;
+    
+    NSTimeInterval locationAge = [newLocation.timestamp timeIntervalSinceNow];
+    
+    if (locationAge > 5.0) return;
+    if (newLocation.horizontalAccuracy < 0)  return;
+        
+}
+
 #pragma mark - event response
 #pragma mark - private Methods
+- (void)startLocate {
+    
+    BOOL locationServicesEnabled = [CLLocationManager locationServicesEnabled];
+    
+    if (locationServicesEnabled) {
+        
+        CLAuthorizationStatus state = [CLLocationManager authorizationStatus];
+        
+        if (state == kCLAuthorizationStatusNotDetermined) {
+            
+            if ([self.locationManger respondsToSelector:@selector(requestWhenInUseAuthorization )]) {
+                [self.locationManger requestWhenInUseAuthorization];
+                
+            }
+            
+        } else if (state == kCLAuthorizationStatusAuthorizedWhenInUse || state ==kCLAuthorizationStatusAuthorizedAlways){
+            
+            self.locationManger.delegate = self;
+            self.locationManger.desiredAccuracy = kCLLocationAccuracyBest;
+            self.locationManger.distanceFilter = 10;
+        }
+        
+        [self.locationManger startUpdatingLocation];
+        
+    } else {
+        
+        NSLog(@"定位未开启");
+    }
+    
+}
+
+
+
 #pragma getters and setters
 
 - (MKMapView *)mapview {
     if (_mapview == nil) {
         _mapview = [[MKMapView alloc] initWithFrame:self.view.bounds];
-//        _mapview.showsUserLocation = YES;
+        _mapview.showsUserLocation = YES;
         _mapview.mapType = MKMapTypeStandard;
         _mapview.userTrackingMode = MKUserTrackingModeFollow;
         _mapview.delegate = self;
@@ -154,11 +233,11 @@
     return _mapview;
 }
 
-- (YNLocation *)location {
-    if (_location == nil) {
-        _location = [[YNLocation alloc] init];
+- (CLLocationManager *)locationManger {
+    if (_locationManger == nil) {
+        _locationManger = [[CLLocationManager alloc] init];
     }
-    return _location;
+    return _locationManger;
 }
 
 @end
