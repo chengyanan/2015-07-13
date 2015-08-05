@@ -13,6 +13,7 @@
 #import "YNNearbyViewController.h"
 #import "YNMineViewController.h"
 #import "YNMoreViewController.h"
+#import "YNNearbyBaiduViewController.h"
 
 @interface YNRootTabBarController ()
 
@@ -28,6 +29,8 @@
     YNHomePageViewController *homePageVc = [[YNHomePageViewController alloc] init];
     YNServiceViewController *serviceVc = [[YNServiceViewController alloc] init];
     YNNearbyViewController *nearbyVc = [[YNNearbyViewController alloc] init];
+    
+//    YNNearbyBaiduViewController *nearbyVc = [[YNNearbyBaiduViewController alloc] init];
     
     YNMineViewController *mineVc = [[YNMineViewController alloc] init];
     YNMoreViewController *moreVc = [[YNMoreViewController alloc] init];
@@ -64,7 +67,5 @@
     moreNav.tabBarItem.title = @"我";
     
 }
-
-
 
 @end

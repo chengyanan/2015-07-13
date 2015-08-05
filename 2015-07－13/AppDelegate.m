@@ -24,7 +24,21 @@
     
     [self.window makeKeyAndVisible];
     
+    [self setupBaiduSDK];
+    
+    
     return YES;
+}
+
+- (void)setupBaiduSDK {
+    
+    _mapManager = [[BMKMapManager alloc]init];
+    
+    // 如果要关注网络及授权验证事件，请设定generalDelegate参数
+    BOOL ret = [_mapManager start:@"7RwLI56coMY3SE3Qrok2qzGX"  generalDelegate:nil];
+    if (!ret) {
+        NSLog(@"manager start failed!");
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

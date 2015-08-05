@@ -30,6 +30,9 @@
 		40C9ED371B6B5568003E7DC4 /* YNCallOutContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C9ED361B6B5568003E7DC4 /* YNCallOutContentView.m */; };
 		40F583441B60DB2300B117AC /* YNScrollCycleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F583431B60DB2300B117AC /* YNScrollCycleCell.m */; };
 		40F583471B60DC0800B117AC /* YNScrollCycleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F583461B60DC0800B117AC /* YNScrollCycleView.m */; };
+		4C762F381B709FFA002F1D9E /* YNWGS84TOGCJ02.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C762F371B709FFA002F1D9E /* YNWGS84TOGCJ02.m */; };
+		4C762F3C1B71AF53002F1D9E /* YNNearbyBaiduViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C762F3B1B71AF53002F1D9E /* YNNearbyBaiduViewController.m */; };
+		4C762F3F1B7204B1002F1D9E /* YNEnterpriseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C762F3E1B7204B1002F1D9E /* YNEnterpriseViewController.m */; };
 		5E47D1F7B1B0420007E10D4D /* libPods-2015-07－13.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B68043E448964FAD805436B /* libPods-2015-07－13.a */; };
 		CE4D0DD51B53AF5600D46A5B /* YNRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4D0DD41B53AF5600D46A5B /* YNRegisterViewController.m */; };
 		CEAE9F031B53573300D4B9A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAE9F021B53573300D4B9A6 /* main.m */; };
@@ -102,6 +105,12 @@
 		40F583431B60DB2300B117AC /* YNScrollCycleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNScrollCycleCell.m; sourceTree = "<group>"; };
 		40F583451B60DC0800B117AC /* YNScrollCycleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNScrollCycleView.h; sourceTree = "<group>"; };
 		40F583461B60DC0800B117AC /* YNScrollCycleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNScrollCycleView.m; sourceTree = "<group>"; };
+		4C762F361B709FFA002F1D9E /* YNWGS84TOGCJ02.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNWGS84TOGCJ02.h; sourceTree = "<group>"; };
+		4C762F371B709FFA002F1D9E /* YNWGS84TOGCJ02.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNWGS84TOGCJ02.m; sourceTree = "<group>"; };
+		4C762F3A1B71AF53002F1D9E /* YNNearbyBaiduViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNNearbyBaiduViewController.h; sourceTree = "<group>"; };
+		4C762F3B1B71AF53002F1D9E /* YNNearbyBaiduViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNNearbyBaiduViewController.m; sourceTree = "<group>"; };
+		4C762F3D1B7204B1002F1D9E /* YNEnterpriseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNEnterpriseViewController.h; sourceTree = "<group>"; };
+		4C762F3E1B7204B1002F1D9E /* YNEnterpriseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNEnterpriseViewController.m; sourceTree = "<group>"; };
 		61171ACB1BC39838779DE974 /* Pods-2015-07－13.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2015-07－13.debug.xcconfig"; path = "Pods/Target Support Files/Pods-2015-07－13/Pods-2015-07－13.debug.xcconfig"; sourceTree = "<group>"; };
 		CDBD23518548B34E74C9B48F /* Pods-2015-07－13.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2015-07－13.release.xcconfig"; path = "Pods/Target Support Files/Pods-2015-07－13/Pods-2015-07－13.release.xcconfig"; sourceTree = "<group>"; };
 		CE4D0DD31B53AF5600D46A5B /* YNRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNRegisterViewController.h; sourceTree = "<group>"; };
@@ -158,6 +167,7 @@
 		4005FB4C1B68647E0069A407 /* nearby */ = {
 			isa = PBXGroup;
 			children = (
+				4C762F351B709FD5002F1D9E /* tool */,
 				4005FB4D1B6864B40069A407 /* YNNearbyViewController.h */,
 				4005FB4E1B6864B40069A407 /* YNNearbyViewController.m */,
 				40A2FA8E1B69DC300066CD8C /* YNBaseAnnotation.h */,
@@ -170,6 +180,8 @@
 				40A2FA981B6A118C0066CD8C /* YNLocationAnnotation.m */,
 				40C9ED351B6B5568003E7DC4 /* YNCallOutContentView.h */,
 				40C9ED361B6B5568003E7DC4 /* YNCallOutContentView.m */,
+				4C762F3D1B7204B1002F1D9E /* YNEnterpriseViewController.h */,
+				4C762F3E1B7204B1002F1D9E /* YNEnterpriseViewController.m */,
 			);
 			path = nearby;
 			sourceTree = "<group>";
@@ -249,6 +261,25 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		4C762F351B709FD5002F1D9E /* tool */ = {
+			isa = PBXGroup;
+			children = (
+				4C762F361B709FFA002F1D9E /* YNWGS84TOGCJ02.h */,
+				4C762F371B709FFA002F1D9E /* YNWGS84TOGCJ02.m */,
+			);
+			path = tool;
+			sourceTree = "<group>";
+		};
+		4C762F391B70C29E002F1D9E /* nearbyWithBaiduSDK */ = {
+			isa = PBXGroup;
+			children = (
+				4C762F3A1B71AF53002F1D9E /* YNNearbyBaiduViewController.h */,
+				4C762F3B1B71AF53002F1D9E /* YNNearbyBaiduViewController.m */,
+			);
+			name = nearbyWithBaiduSDK;
+			path = "2015-07－13/nearbyWithBaiduSDK";
+			sourceTree = "<group>";
+		};
 		B57D2B3BF47894DB4CC9FC0C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +294,7 @@
 		CEAE9EF41B53573300D4B9A6 = {
 			isa = PBXGroup;
 			children = (
+				4C762F391B70C29E002F1D9E /* nearbyWithBaiduSDK */,
 				CEAE9EFF1B53573300D4B9A6 /* 2015-07－13 */,
 				CEAE9F191B53573300D4B9A6 /* 2015-07－13Tests */,
 				CEAE9EFE1B53573300D4B9A6 /* Products */,
@@ -654,6 +686,7 @@
 				CEAE9F451B535E8A00D4B9A6 /* YNServiceViewController.m in Sources */,
 				402BC2B41B5769A500E6A429 /* YNOrderOrreserveCell.m in Sources */,
 				402FAB091B55F42F000FA55B /* YNTool.m in Sources */,
+				4C762F381B709FFA002F1D9E /* YNWGS84TOGCJ02.m in Sources */,
 				40B521D51B65E14C006C1971 /* YNBaseModel.m in Sources */,
 				40B521DE1B66022B006C1971 /* YNSecondLevelModel.m in Sources */,
 				CEAE9F031B53573300D4B9A6 /* main.m in Sources */,
@@ -662,6 +695,8 @@
 				40A2FA901B69DC300066CD8C /* YNBaseAnnotation.m in Sources */,
 				40C9ED371B6B5568003E7DC4 /* YNCallOutContentView.m in Sources */,
 				4062B3F11B54EE8B00175EE1 /* UITextField+LeftAndRightView.m in Sources */,
+				4C762F3C1B71AF53002F1D9E /* YNNearbyBaiduViewController.m in Sources */,
+				4C762F3F1B7204B1002F1D9E /* YNEnterpriseViewController.m in Sources */,
 				40F583471B60DC0800B117AC /* YNScrollCycleView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

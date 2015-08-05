@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol YNCallOutContentViewDelegate <NSObject>
 
+- (void)callOutContentViewTaped;
+
+@end
 @interface YNCallOutContentView : UIView
+
+@property (nonatomic, assign) id<YNCallOutContentViewDelegate> delegate;
 
 @end
