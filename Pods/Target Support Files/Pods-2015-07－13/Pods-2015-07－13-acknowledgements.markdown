@@ -1,6 +1,10 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
+## BaiduMapAPI
+
+LICENSE  ©2013 Baidu, Inc. All rights reserved.
+
 ## MBProgressHUD
 
 Copyright (c) 2009-2015 Matej Bukovinski

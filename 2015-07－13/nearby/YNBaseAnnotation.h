@@ -15,5 +15,6 @@
 // Title and subtitle for use by selection UI.
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *subtitle;
+@property (nonatomic, assign) NSInteger index;
 
 @end

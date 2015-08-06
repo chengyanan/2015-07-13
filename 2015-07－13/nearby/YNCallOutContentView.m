@@ -7,6 +7,7 @@
 //
 
 #import "YNCallOutContentView.h"
+
 @interface YNCallOutContentView()
 
 @property (nonatomic, strong) UIImageView *imageView;
@@ -25,8 +26,19 @@
         [self addSubview:self.title];
         
         [self settingLayout];
+        
+        UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
+        [self addGestureRecognizer:tgr];
+        
     }
     return self;
+}
+
+- (void)tap {
+    
+    if ([self.delegate respondsToSelector:@selector(callOutContentViewTaped)]) {
+        [self.delegate callOutContentViewTaped];
+    }
 }
 
 - (void)settingLayout {

@@ -1,13 +1,23 @@
 PODS:
+  - BaiduMapAPI (2.8.0):
+    - BaiduMapAPI/All (= 2.8.0)
+  - BaiduMapAPI/All (2.8.0):
+    - BaiduMapAPI/Core
+    - BaiduMapAPI/Extend
+  - BaiduMapAPI/Core (2.8.0)
+  - BaiduMapAPI/Extend (2.8.0):
+    - BaiduMapAPI/Core
   - Masonry (0.6.2)
   - MBProgressHUD (0.9.1)
 
 DEPENDENCIES:
+  - BaiduMapAPI
   - Masonry
   - MBProgressHUD
 
 SPEC CHECKSUMS:
+  BaiduMapAPI: e066aa1e85f9fee77a1bc071afb67552852bb0fb
   Masonry: 362e8a1cc0beada4a4c4832d5e863da2a51533be
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.38.2
