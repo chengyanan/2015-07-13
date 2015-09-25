@@ -111,8 +111,8 @@
     CGContextAddLineToPoint(context,midx-Arror_height, maxy);
     
     CGContextAddArcToPoint(context, minx, maxy, minx, miny, radius);
-    CGContextAddArcToPoint(context, minx, minx, maxx, miny, radius);
-    CGContextAddArcToPoint(context, maxx, miny, maxx, maxx, radius);
+    CGContextAddArcToPoint(context, minx, miny, maxx, miny, radius);
+    CGContextAddArcToPoint(context, maxx, miny, maxx, maxy, radius);
     CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, radius);
     
     

@@ -4,76 +4,45 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>BaiduMapAPI.xcscheme</key>
+		<key>Pods-2015-07－13-BaiduMapAPI.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
-		</dict>
-		<key>MBProgressHUD.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>5</integer>
-		</dict>
-		<key>Masonry.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-2015-07－13-MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>Pods-2015-07－13-Masonry.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>Pods-2015-07－13.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0B0D7FD2B18A7267A12314D6</key>
+		<key>0E48821B596343656DFB7D91</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>18259F8575E594A9B967F193</key>
+		<key>5E17C2D613B7D4B3AD269A97</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1ADF8A91A7C572E4F1E4E023</key>
+		<key>646236DB2348B6D022484008</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>516D07ED810EA4A24131DB7CF019445E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6A538546F49BBF8969BC5A3F9469E24A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>71F937765610CBED1179CF700C3B6965</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BE72B8CB22509397B38639993DF69ED9</key>
+		<key>99678156B1997A3FA537F06A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

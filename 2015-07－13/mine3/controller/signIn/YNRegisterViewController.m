@@ -71,6 +71,7 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillDisappear:) name:UIKeyboardWillHideNotification object:nil];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -125,7 +126,10 @@
         self.getVerificationCode.backgroundColor = [UIColor grayColor];
         self.getVerificationCode.userInteractionEnabled = NO;
         
-        //是手机号发送验证码
+        //掉接口向手机号发送验证码
+        
+        
+        
         
     } else {
         
@@ -188,6 +192,7 @@
 }
 
 - (void)setupLayout {
+    
     
     [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.bottom.equalTo(self.view);

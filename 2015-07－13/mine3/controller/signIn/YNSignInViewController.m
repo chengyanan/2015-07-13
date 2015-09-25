@@ -51,6 +51,8 @@
     [self.view addSubview:self.LoginButton];
     
     [self setUpLayout];
+    
+    
 }
 
 #pragma mark - YNRegisterViewControllerDelagate

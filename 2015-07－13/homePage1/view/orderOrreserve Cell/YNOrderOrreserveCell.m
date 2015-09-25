@@ -42,6 +42,7 @@
     if (self) {
 
         self.contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
         [self.contentView addSubview:self.businessImageView];
         [self.contentView addSubview:self.businessTitleLabel];

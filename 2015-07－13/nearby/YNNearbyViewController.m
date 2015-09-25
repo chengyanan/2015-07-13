@@ -27,7 +27,7 @@
 @property (nonatomic, strong)  YNCallOutAnnotation *callOutAnnotation;
 
 @property (nonatomic, strong)  YNCallOutAnnotationView *callOutAnnotationView;
-@property (nonatomic, strong)  YNCallOutAnnotationView *tempCallOutAnnotationView;
+//@property (nonatomic, strong)  YNCallOutAnnotationView *tempCallOutAnnotationView;
 
 @property (nonatomic, strong) CLLocationManager *locationManger;
 @property (nonatomic, strong) CLLocation *currentLocation;
