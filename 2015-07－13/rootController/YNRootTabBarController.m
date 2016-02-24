@@ -13,7 +13,7 @@
 #import "YNNearbyViewController.h"
 #import "YNMineViewController.h"
 #import "YNMoreViewController.h"
-#import "YNNearbyBaiduViewController.h"
+
 
 @interface YNRootTabBarController ()
 
